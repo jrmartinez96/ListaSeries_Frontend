@@ -1,0 +1,30 @@
+/*
+==========================================
+    Universidad del Valle de Guatemala
+    Sistemas y tecnologias web
+
+    Jose Martinez       Jose Rodolfo Perez
+    15163               16056
+
+    Proyecto - Lista Series
+==========================================
+*/
+
+.costumize-link{
+    color: white;
+    text-decoration: none;
+}
+
+.costumize-button{
+    align-items: center;
+    background: rgb(255, 55, 55);
+    border-radius: 10px;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    margin: 0 auto;
+    width: 10rem;
+}
+.costumize-button:hover {
+    background: rgb(228, 49, 49);
+}
