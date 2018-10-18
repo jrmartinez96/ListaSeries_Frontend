@@ -17,7 +17,7 @@
 
 .costumize-button{
     align-items: center;
-    background: rgb(255, 55, 55);
+    background: steelblue;
     border-radius: 10px;
     display: flex;
     height: 2rem;
@@ -26,5 +26,5 @@
     width: 10rem;
 }
 .costumize-button:hover {
-    background: rgb(228, 49, 49);
+    background: rgb(63, 117, 161);
 }

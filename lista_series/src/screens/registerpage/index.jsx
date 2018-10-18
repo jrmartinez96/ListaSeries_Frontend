@@ -13,6 +13,7 @@
 import React from 'react';
 
 import NavBar from '../../components/NavBar';
+import RegisterForm from '../../components/RegisterForm';
 
 class RegisterPage extends React.Component {
 
@@ -21,6 +22,7 @@ class RegisterPage extends React.Component {
         return(
             <div>
                 <NavBar>Register</NavBar>
+                <RegisterForm />
             </div>
         );
     }
