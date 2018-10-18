@@ -9,18 +9,3 @@
     Proyecto - Lista Series
 ==========================================
 */
-
-import React from 'react';
-
-class ListaSeriesApp extends React.Component {
-
-    render(){
-        return(
-            <div>
-                Hola Mundo
-            </div>
-        )
-    }
-}
-
-export default ListaSeriesApp;

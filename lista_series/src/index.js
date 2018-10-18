@@ -15,7 +15,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './configureStore';
-import Root from './components/Root';
+import Root from './screens/Root';
 
 const store = configureStore();
 
