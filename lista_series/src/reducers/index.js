@@ -14,6 +14,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer} from 'redux-form';
 
 import user from './user';
+import * as fromUser from './user';
 
 const reducer = combineReducers({
     user,
@@ -21,3 +22,7 @@ const reducer = combineReducers({
 });
 
 export default reducer;
+
+
+/* SELECTORS */
+export const getIsLoggedIn = (state) => fromUser.getIsLoggedIn(state.user);

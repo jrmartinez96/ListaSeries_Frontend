@@ -23,7 +23,8 @@
     height: 2rem;
     justify-content: center;
     margin: 0 auto;
-    width: 10rem;
+    width: 8rem;
+    font-size: 1.2rem;
 }
 .costumize-button:hover {
     background: rgb(63, 117, 161);

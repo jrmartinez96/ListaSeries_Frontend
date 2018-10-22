@@ -14,6 +14,7 @@ import React from 'react';
 
 import CostumizeLink from '../../components/CostumizeLink';
 import NavBar from '../../components/NavBar';
+import * as screenNames from '../screenNames';
 
 import './welcomepage.css';
 
@@ -23,7 +24,7 @@ class WelcomePage extends React.Component {
 
         return(
             <div>
-                <NavBar>Welcome!</NavBar>
+                <NavBar>{screenNames.WELCOME_PAGE_NAME}</NavBar>
                 <div className="buttons-box">
                     <div className="login-button-box">
                         <CostumizeLink to="/login/"> Login </CostumizeLink>

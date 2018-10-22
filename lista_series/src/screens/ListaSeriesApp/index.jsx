@@ -16,6 +16,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import WelcomePage from '../welcomepage';
 import LoginPage from '../loginpage';
 import RegisterPage from '../registerpage';
+import HomePage from '../homepage';
 
 class ListaSeriesApp extends React.Component {
 
@@ -27,6 +28,7 @@ class ListaSeriesApp extends React.Component {
                         <Route exact path="/" component={WelcomePage} />
                         <Route exact path="/login/" component={LoginPage} />
                         <Route exact path="/register/" component={RegisterPage} />
+                        <Route exact path="/homepage/" component={HomePage} />
                     </Switch>
                 </BrowserRouter>
             </div>

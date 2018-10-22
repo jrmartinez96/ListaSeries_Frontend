@@ -13,9 +13,10 @@
 import * as types from '../types';
 
 
-/*-----------------
-    USER REGISTER
-------------------- */
+/*---------------------------------------------
+                    USER 
+-----------------------------------------------*/
+// Register
 export const userRegister = (name, username, email, password) => (
     {
         type: types.USER_REGISTERED,
@@ -28,10 +29,7 @@ export const userRegister = (name, username, email, password) => (
     }
 );
 
-
-/*-----------------
-    USER LOGIN
-------------------- */
+// Login
 export const userLogIn = (email, password) => (
     {
         type: types.USER_LOGGED_IN,
@@ -42,6 +40,15 @@ export const userLogIn = (email, password) => (
     }
 );
 
+// Logout
+export const userLogOut = () => (
+    {
+        type: types.USER_LOGGED_OUT,
+        payload : {}
+    }
+)
+
+// Download Data
 export const userDownloadData = (name, username, email, password) => (
     {
         type: types.USER_DATA_DOWNLOADED,
@@ -50,6 +57,46 @@ export const userDownloadData = (name, username, email, password) => (
             username,
             email,
             password
+        }
+    }
+);
+
+
+/*---------------------------------------------
+                    SERIES 
+-----------------------------------------------*/
+
+// Add series to my list
+export const addSeriesToMyList = (seriesId, name, rating, description) => (
+    {
+        type: types.MY_LIST_SERIES_ADDED,
+        payload: {
+            seriesId,
+            name,
+            rating,
+            description
+        }
+    }
+);
+
+// Delete series to my list
+export const deleteSeriesToMyList = (seriesId) => (
+    {
+        type: types.MY_LIST_SERIES_DELETED,
+        payload: {
+            seriesId,
+        }
+    }
+);
+
+// Update actual episode to a Series
+export const updateSeriesActualEpisode = (seriesId, actualEspisode, add) => (
+    {
+        type: types.SERIES_ACTUAL_EPISODE_UPDATED,
+        payload: {
+            seriesId,
+            actualEspisode,
+            add
         }
     }
 )

@@ -11,22 +11,24 @@
 */
 
 import React from 'react';
+import { connect } from 'react-redux';
+
+import './homepage.css';
 
 import NavBar from '../../components/NavBar';
-import RegisterForm from '../../components/RegisterForm';
 import * as screenNames from '../screenNames';
 
-class RegisterPage extends React.Component {
+class homePage extends React.Component {
 
     render(){
-
         return(
             <div>
-                <NavBar>{screenNames.REGISTER_PAGE_NAME}</NavBar>
-                <RegisterForm />
+                <NavBar>{screenNames.HOME_PAGE_NAME}</NavBar>
             </div>
-        );
+        )
     }
 }
 
-export default RegisterPage;
+const HomePage = connect(null, null)(homePage);
+
+export default HomePage;

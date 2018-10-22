@@ -13,6 +13,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import * as actions from '../../actions';
+
 import './login-form.css'
 
 const renderInput = ({input, meta, ...props}) => (
@@ -31,7 +33,7 @@ const renderInput = ({input, meta, ...props}) => (
     </div>
 );
 
-const LoginForm = ({ handleSubmit }) => (
+const LoginForm = ({handleSubmit}) => (
     <form onSubmit={handleSubmit}>
         <Field 
             type="text"
@@ -48,7 +50,7 @@ const LoginForm = ({ handleSubmit }) => (
         />
 
         <div className="input-button-box">
-            <button type="submit" className="input-button"> Login </button>
+            <button type="submit" className="input-button"  > Login </button>
         </div>
     </form>
 )
@@ -58,6 +60,7 @@ export default reduxForm({
 
     onSubmit(values, dispatch){
         console.log(values);
+        dispatch(actions.userLogIn(values.username, values.password));
     },
 
     validate(values){
