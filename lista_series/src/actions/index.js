@@ -92,11 +92,21 @@ export const deleteSeriesToMyList = (seriesId) => (
 // Update actual episode to a Series
 export const updateSeriesActualEpisode = (seriesId, actualEspisode, add) => (
     {
-        type: types.SERIES_ACTUAL_EPISODE_UPDATED,
+        type: types.SERIE_ACTUAL_EPISODE_UPDATED,
         payload: {
             seriesId,
             actualEspisode,
             add
+        }
+    }
+)
+
+// Update current serie info displayed
+export const updateCurrentSerieInfo = (serieId) => (
+    {
+        type: types.CURRENT_SERIE_INFO_DISPLAY_UPDATED,
+        payload: {
+            serieId
         }
     }
 )

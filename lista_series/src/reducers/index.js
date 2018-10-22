@@ -38,3 +38,4 @@ export const getIsLoggedIn = (state) => fromUser.getIsLoggedIn(state.user);
     // Series
 export const getMyListSeriesById = (state, seriesId) => fromMyListSeries.getMyListSeriesById(state.myListSeries, seriesId);
 export const getMyList = (state) => fromMyListSeries.getMyList(state.myListSeries);
+export const getCurrentSerieInfoDisplay = (state) => fromMyListSeries.getCurrentSerieInfoDisplay(state.myListSeries);

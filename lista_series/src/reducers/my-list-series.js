@@ -53,14 +53,29 @@ const order = (state=[], action) => {
     }
 }
 
+// Current Series Info
+const currentSerieInfoDisplay = (state="", action) => {
+    switch (action.type) {
+        case types.CURRENT_SERIE_INFO_DISPLAY_UPDATED:{
+            const { serieId } = action.payload;
+            return serieId;
+        }
+    
+        default:
+            return state;
+    }
+}
+
 // Combine reducers
 
 export default combineReducers({
     byId,
-    order
+    order,
+    currentSerieInfoDisplay,
 })
 
 /* SELECTORS */
 
 export const getMyListSeriesById = (state, seriesId) => state.byId[seriesId];
 export const getMyList = (state) => state.order;
+export const getCurrentSerieInfoDisplay = (state) => state.currentSerieInfoDisplay;
