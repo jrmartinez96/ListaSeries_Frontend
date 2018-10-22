@@ -13,24 +13,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './homepage.css';
+import './series-info.css';
 
-import NavBar from '../../components/NavBar';
-import MyList from '../../components/MyList';
-import * as screenNames from '../screenNames';
-
-class homePage extends React.Component {
+class seriesInfo extends React.Component {
 
     render(){
         return(
-            <div>
-                <NavBar>{screenNames.HOME_PAGE_NAME}</NavBar>
-                <MyList />
+            <div className="series-info-box">
+
             </div>
         )
     }
 }
 
-const HomePage = connect(null, null)(homePage);
+const SeriesInfo = connect(null, null)(seriesInfo);
 
-export default HomePage;
+export default SeriesInfo;
