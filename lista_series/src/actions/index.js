@@ -12,14 +12,51 @@
 
 import * as types from '../types';
 
+/*===========================================================
+                        STATE ACTIONS
+=============================================================*/
+/** 
+ * !----------------------------------
+ *                REDIRECTING
+ * !----------------------------------
+ */
 
-/*---------------------------------------------
-                    USER 
------------------------------------------------*/
-// Register
-export const userRegister = (name, username, email, password) => (
+export const pathRedirected = (path) => (
+    {
+        type: types.PATH_REDIRECTED,
+        payload:{
+            path,
+        }
+    }
+)
+
+export const finishRedirected = () => (
+    {
+        type: types.FINISH_REDIRECTED,
+        payload: {}
+    }
+)
+
+/** 
+ * !----------------------------------
+ *                USER
+ * !----------------------------------
+ */
+
+// * Register
+export const userRegistered = (success) => (
     {
         type: types.USER_REGISTERED,
+        payload: {
+            success,
+        }
+    }
+)
+
+// * Login
+export const userLoggedIn = (name, username, email, password) => (
+    {
+        type: types.USER_LOGGED_IN,
         payload: {
             name,
             username,
@@ -27,44 +64,22 @@ export const userRegister = (name, username, email, password) => (
             password
         }
     }
-);
+)
 
-// Login
-export const userLogIn = (email, password) => (
-    {
-        type: types.USER_LOGGED_IN,
-        payload: {
-            email,
-            password
-        }
-    }
-);
-
-// Logout
-export const userLogOut = () => (
+// * Logout
+export const userLoggedOut = () => (
     {
         type: types.USER_LOGGED_OUT,
         payload : {}
     }
 )
 
-// Download Data
-export const userDownloadData = (name, username, email, password) => (
-    {
-        type: types.USER_DATA_DOWNLOADED,
-        payload: {
-            name, 
-            username,
-            email,
-            password
-        }
-    }
-);
 
-
-/*---------------------------------------------
+/**
+* !---------------------------------------------
                     SERIES 
------------------------------------------------*/
+* !---------------------------------------------
+*/
 
 // Add series to my list
 export const addSeriesToMyList = (seriesId, name, rating, description) => (
@@ -108,5 +123,69 @@ export const updateCurrentSerieInfo = (serieId) => (
         payload: {
             serieId
         }
+    }
+)
+
+
+/*===========================================================
+                        SAGA ACTIONS
+=============================================================*/
+
+/** 
+ * !----------------------------------
+ *                REDIRECTING
+ * !----------------------------------
+ */
+export const pathRedirecting = ( path ) => (
+    {
+        type: types.PATH_REDIRECTING,
+        payload:{
+            path,
+        }
+    }
+)
+
+export const finishRedirecting = () => (
+    {
+        type: types.FINISH_REDIRECTING,
+        payload: {}
+    }
+)
+
+/** 
+ * !----------------------------------
+ *                USER
+ * !----------------------------------
+ */
+
+// * Register
+export const userRegistering = (name, username, email, password) => (
+    {
+        type: types.USER_REGISTERING,
+        payload: {
+            name,
+            username,
+            email,
+            password
+        }
+    }
+);
+
+// * Login
+export const userLogginIn = (username, password) => (
+    {
+        type: types.USER_LOGGIN_IN,
+        payload: {
+            username,
+            password
+        }
+    }
+);
+
+// * Logout
+export const userLogginOut = () => (
+    {
+        type: types.USER_LOGGIN_OUT,
+        payload : {}
     }
 )

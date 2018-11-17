@@ -59,8 +59,8 @@ export default reduxForm({
     form: 'loginForm',
 
     onSubmit(values, dispatch){
-        console.log(values);
-        dispatch(actions.userLogIn(values.username, values.password));
+        dispatch(actions.userLogginIn(values.username, values.password));
+        dispatch(actions.pathRedirecting("/homepage/"));
     },
 
     validate(values){

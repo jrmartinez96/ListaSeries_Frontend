@@ -11,12 +11,14 @@
 */
 
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
+import Redirecting from '../../components/Redirecting';
 import WelcomePage from '../welcomepage';
 import LoginPage from '../loginpage';
 import RegisterPage from '../registerpage';
 import HomePage from '../homepage';
+
 
 class ListaSeriesApp extends React.Component {
 
@@ -24,12 +26,14 @@ class ListaSeriesApp extends React.Component {
         return(
             <div>
                 <BrowserRouter>
-                    <Switch>
+                    <div>
+                        <Route path="/" component={Redirecting} />
                         <Route exact path="/" component={WelcomePage} />
                         <Route exact path="/login/" component={LoginPage} />
                         <Route exact path="/register/" component={RegisterPage} />
                         <Route exact path="/homepage/" component={HomePage} />
-                    </Switch>
+                        <Route exact path="/homepage-:serieId/" component={HomePage} />
+                    </div>
                 </BrowserRouter>
             </div>
         )

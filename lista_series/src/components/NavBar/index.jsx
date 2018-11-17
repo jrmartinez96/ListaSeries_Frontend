@@ -26,9 +26,11 @@ class navBar extends React.Component {
         const { isLoggedIn, logOut, children } = this.props;
 
         if(!isLoggedIn && (children !== screenNames.LOGIN_PAGE_NAME && children !== screenNames.REGISTER_PAGE_NAME && children !== screenNames.WELCOME_PAGE_NAME )){
-            console.log(children)
             return <Redirect to="/" />
+        } else if(isLoggedIn && (children === screenNames.LOGIN_PAGE_NAME || children === screenNames.REGISTER_PAGE_NAME || children === screenNames.WELCOME_PAGE_NAME )){
+            return <Redirect to="/homepage/" />
         }
+        console.log(children)
 
         return(
             <div className="nav-bar-box">
@@ -55,7 +57,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
     {
         logOut: () => {
-            dispatch(actions.userLogOut());
+            dispatch(actions.userLoggedOut());
         },
     }
 )

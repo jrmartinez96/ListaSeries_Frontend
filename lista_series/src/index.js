@@ -24,7 +24,7 @@ const store = configureStore();
 store.dispatch(actions.addSeriesToMyList("s1", "The Flash", 4.5, "My name is Barry Allen, and I am the fastest man alive..."));
 store.dispatch(actions.addSeriesToMyList("s2", "Arrow", 4.5, "My name is Oliver Queen. 5 years ago I was strucked in an island..."));
 
-store.dispatch(actions.userLogIn("asd", "asd"))
+store.dispatch(actions.userLogginIn("asd", "asd"));
 
 ReactDOM.render(
     <Root store={store} />, 

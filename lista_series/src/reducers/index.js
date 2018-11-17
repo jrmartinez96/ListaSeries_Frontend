@@ -15,13 +15,16 @@ import { reducer as formReducer} from 'redux-form';
 
 import user from './user';
 import myListSeries from './my-list-series'
+import redirect from './redirect';
 
+import * as fromRedirect from './redirect';
 import * as fromUser from './user';
 import * as fromMyListSeries from './my-list-series';
 
 
 /* REDUCER */
 const reducer = combineReducers({
+    redirect,
     user,
     myListSeries,
     form: formReducer,
@@ -31,6 +34,10 @@ export default reducer;
 
 
 /* SELECTORS */
+
+    //Redirect
+export const getPath = (state) => fromRedirect.getPath(state.redirect);
+export const getRedirectState = (state) => fromRedirect.getRedirectState(state.redirect);
 
     // User
 export const getIsLoggedIn = (state) => fromUser.getIsLoggedIn(state.user);

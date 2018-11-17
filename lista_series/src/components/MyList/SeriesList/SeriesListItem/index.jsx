@@ -36,8 +36,8 @@ class seriesListItem extends React.Component {
         const serie = stateSelectors.getMyListSeriesById(appState,serieId);
         const { name } = serie;
         return(
-            <div className="series-list-item-box" onClick={this.onCurrentItemClick}>
-                <div className="series-name">
+            <div className="series-list-item-box">
+                <div className="series-name"  onClick={this.onCurrentItemClick}>
                     {name}
                 </div>
 

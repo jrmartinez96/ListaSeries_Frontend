@@ -13,6 +13,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Rating from './Rating'
 import * as stateSelectors from '../../../reducers';
 
 import './series-info.css';
@@ -22,16 +23,17 @@ class seriesInfo extends React.Component {
     render(){
         const { appState } = this.props;
         const serieId = stateSelectors.getCurrentSerieInfoDisplay(appState);
+        const serie = stateSelectors.getMyListSeriesById(appState, serieId);
 
-        if(serieId===""){
+        if(serie === undefined){
             return(
                 <div className="series-info-box">
                     No serie
+                    <Rating ratingNumber={3.5}/>
                 </div>
             )
         }
-
-        const serie = stateSelectors.getMyListSeriesById(appState, serieId);
+        
 
         return(
             <div className="series-info-box">

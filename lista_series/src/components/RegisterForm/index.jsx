@@ -13,6 +13,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import * as actions from '../../actions';
 import './register-form.css'
 
 const renderInput = ({input, meta, ...props}) => (
@@ -78,7 +79,8 @@ export default reduxForm({
     form: 'registerForm',
 
     onSubmit(values, dispatch){
-        console.log(values);
+        const { name, username, email, password } = values;
+        dispatch(actions.userRegistering(name, username, email, password));
     },
 
     validate(values){
