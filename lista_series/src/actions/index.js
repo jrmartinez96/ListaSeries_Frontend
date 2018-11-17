@@ -189,3 +189,37 @@ export const userLogginOut = () => (
         payload : {}
     }
 )
+
+/**
+* !---------------------------------------------
+                    SERIES 
+* !---------------------------------------------
+*/
+
+export const myListSeriesAdding = (id) => (
+    {
+        type: types.MY_LIST_SERIES_ADDING,
+        payload:{
+            id,
+        }
+    }
+)
+
+export const myListSeriesDeleting = (id) => (
+    {
+        type: types.MY_LIST_SERIES_DELETING,
+        payload:{
+            id,
+        }
+    }
+)
+
+export const serieActualEpisodeUpdating = (id, quantity) => (
+    {
+        type: types.SERIE_ACTUAL_EPISODE_UPDATING,
+        payload: {
+            id,
+            quantity,
+        }
+    }
+)
