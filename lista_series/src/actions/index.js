@@ -82,20 +82,23 @@ export const userLoggedOut = () => (
 */
 
 // Add series to my list
-export const addSeriesToMyList = (seriesId, name, rating, description) => (
+export const myListSeriesAdded = (seriesId, name, rating, plot, episodes, seasons, releaseDate) => (
     {
         type: types.MY_LIST_SERIES_ADDED,
         payload: {
             seriesId,
             name,
             rating,
-            description
+            plot,
+            episodes,
+            seasons,
+            releaseDate,
         }
     }
 );
 
 // Delete series to my list
-export const deleteSeriesToMyList = (seriesId) => (
+export const myListSeriesDeleted = (seriesId) => (
     {
         type: types.MY_LIST_SERIES_DELETED,
         payload: {
@@ -105,13 +108,12 @@ export const deleteSeriesToMyList = (seriesId) => (
 );
 
 // Update actual episode to a Series
-export const updateSeriesActualEpisode = (seriesId, actualEspisode, add) => (
+export const serieActualEpisodeUpdated = (seriesId, quantity) => (
     {
         type: types.SERIE_ACTUAL_EPISODE_UPDATED,
         payload: {
             seriesId,
-            actualEspisode,
-            add
+            quantity,
         }
     }
 )
@@ -126,6 +128,22 @@ export const updateCurrentSerieInfo = (serieId) => (
     }
 )
 
+/**
+* !---------------------------------------------
+                SEARCH SERIES 
+* !---------------------------------------------
+*/
+
+// Contiene las series buscadas en la base de datos 
+export const seriesSearched = ( searchName, series ) => (
+    {
+        type: types.SERIES_SEARCHED,
+        payload: {
+            searchName,
+            series,
+        }
+    }
+)
 
 /*===========================================================
                         SAGA ACTIONS
@@ -196,30 +214,49 @@ export const userLogginOut = () => (
 * !---------------------------------------------
 */
 
-export const myListSeriesAdding = (id) => (
+// Adding serie saga call
+export const myListSeriesAdding = (seriesId) => (
     {
         type: types.MY_LIST_SERIES_ADDING,
         payload:{
-            id,
+            seriesId,
         }
     }
 )
 
-export const myListSeriesDeleting = (id) => (
+// Deleting serie saga call
+export const myListSeriesDeleting = (seriesId) => (
     {
         type: types.MY_LIST_SERIES_DELETING,
         payload:{
-            id,
+            seriesId,
         }
     }
 )
 
-export const serieActualEpisodeUpdating = (id, quantity) => (
+// Updating actual episode on serie saga call
+export const serieActualEpisodeUpdating = (seriesId, quantity) => (
     {
         type: types.SERIE_ACTUAL_EPISODE_UPDATING,
         payload: {
-            id,
+            seriesId,
             quantity,
+        }
+    }
+)
+
+/**
+* !---------------------------------------------
+                SEARCH SERIES 
+* !---------------------------------------------
+*/
+
+// Searching series with name saga call
+export const searchingSeries  = (name) => (
+    {
+        type: types.SERIES_SEARCHING,
+        payload: {
+            name,
         }
     }
 )

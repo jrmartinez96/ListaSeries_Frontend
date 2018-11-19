@@ -20,6 +20,8 @@ import './series-info.css';
 
 class seriesInfo extends React.Component {
 
+
+
     render(){
         const { appState } = this.props;
         const serieId = stateSelectors.getCurrentSerieInfoDisplay(appState);
@@ -29,7 +31,6 @@ class seriesInfo extends React.Component {
             return(
                 <div className="series-info-box">
                     No serie
-                    <Rating ratingNumber={3.5}/>
                 </div>
             )
         }
@@ -37,7 +38,18 @@ class seriesInfo extends React.Component {
 
         return(
             <div className="series-info-box">
-                {serie.name}
+                <div className="serie-name">
+                    {serie.name}
+                </div>
+                <div className="serie-rating">
+                    <Rating ratingNumber={serie.rating} />
+                </div>
+                <div className="serie-description">
+                    {serie.plot}
+                </div>
+                <div className="serie-actual-episode-container">
+                    {}
+                </div>
             </div>
         )
     }

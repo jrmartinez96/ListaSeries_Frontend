@@ -11,6 +11,7 @@
 */
 
 import React from 'react';
+import './rating.css';
 
 class Rating extends React.Component {
 
@@ -33,7 +34,7 @@ class Rating extends React.Component {
         }
 
         return(
-            <div>
+            <div className="rating-container">
                 {starsRating.map((starId, index) => {
                     if(starId === 2){
                         return <img key={index} alt="star" src={require('../../../../assets/icons/full-star/2x/full-star.png')} />

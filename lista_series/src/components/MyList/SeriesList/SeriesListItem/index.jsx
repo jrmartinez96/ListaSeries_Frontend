@@ -24,11 +24,16 @@ class seriesListItem extends React.Component {
     onCurrentItemClick = () => {
         const { onItenClick, serieId } = this.props;
         onItenClick(serieId);
+        
     }
 
     xClick = () => {
-        const { onDeleteClick, serieId } = this.props;
+        const { onDeleteClick, serieId, currentSerieInfo } = this.props;
         onDeleteClick(serieId);
+
+        if(currentSerieInfo === serieId){
+
+        }
     }
 
     render(){
@@ -52,16 +57,21 @@ class seriesListItem extends React.Component {
 const mapStateToProps = (state) => (
     {
         appState: state,
+        currentSerieInfo: stateSelectors.getCurrentSerieInfoDisplay(state),
     }
 );
 
 const mapDispatchToProps = (dispatch) => (
     {
         onItenClick: (serieId) => {
-            dispatch(actions.updateCurrentSerieInfo(serieId));
+            dispatch(actions.pathRedirecting(`/homepage-${serieId}`));
         },
         onDeleteClick: (serieId) => {
-            dispatch(actions.deleteSeriesToMyList(serieId));
+            dispatch(actions.myListSeriesDeleting(serieId));
+            dispatch(actions.updateCurrentSerieInfo(""))
+        },
+        onDeleteCurrentSerieInfo: () => {
+            dispatch(actions.pathRedirecting("/homepage/"))
         }
     }
 )

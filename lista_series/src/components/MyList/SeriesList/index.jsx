@@ -26,7 +26,7 @@ class seriesList extends React.Component {
         return(
             <div className="series-list-box">
                 {seriesOrder.map(id => {
-                    return <SeriesListItem serieId={id} key={id}/>
+                    return <SeriesListItem serieId={id} key={id} />
                 })}
             </div>
         )

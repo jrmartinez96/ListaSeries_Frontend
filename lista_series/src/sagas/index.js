@@ -11,13 +11,17 @@
 */
 
 import { all, fork } from 'redux-saga/effects';
-import { watchUser } from './user';
 import { watchRedirect } from './redirect';
+import { watchUser } from './user';
+import { watchSeries } from './series';
+import { watchSearchSeries } from './search-series';
 
 function* mainSaga(){
     yield all([
         fork(watchUser),
         fork(watchRedirect),
+        fork(watchSeries),
+        fork(watchSearchSeries),
     ]);
 }
 

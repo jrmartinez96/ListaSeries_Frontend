@@ -36,7 +36,6 @@ class redirecting extends React.Component {
         const currentPath = this.props.location.pathname;
         
         if(redirectState && (currentPath !== pathRedirecting)){
-            console.log("Redirecting to: ",pathRedirecting);
             return <Redirect to={pathRedirecting} />
         } 
 

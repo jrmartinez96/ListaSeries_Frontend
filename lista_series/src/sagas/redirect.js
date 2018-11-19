@@ -17,7 +17,7 @@ import * as actions from '../actions';
 
 function* redirectTo(action){
     const { path } = action.payload;
-
+    yield console.log("Redirecting to: ", path);
     yield put(actions.pathRedirected(path));
 }
 
@@ -26,7 +26,7 @@ function* finishRedirecting(action){
 }
 
 /*---------------------------------
-            WATCH R edirect
+            WATCH REDIRECT
 -----------------------------------*/
 export function* watchRedirect(){
     yield takeEvery(
