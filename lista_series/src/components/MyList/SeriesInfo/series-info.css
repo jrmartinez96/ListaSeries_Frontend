@@ -13,6 +13,31 @@
 .series-info-box{
     border-radius: 10px;
     border: 1px solid rgba(128, 128, 128, 0.7);
-    height: 20rem;
     flex: 1;
+    height: 20rem;
+}
+
+.serie-name{
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.serie-season-release{
+    margin: 5px 10px;
+}
+
+.serie-description{
+    margin: 5px 10px;
+    height: 6rem;
+    overflow-y: auto;
+}
+
+.episode-serie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    height: 4rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.493);
 }

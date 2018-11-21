@@ -25,7 +25,7 @@ function* addSeriesToMyList(action){
 
     //TODO: API CALL
 
-    yield put(actions.myListSeriesAdded(seriesId, "Series Name", 2, "Series Description", 24, 1, "05/08/2018"))
+    yield put(actions.myListSeriesAdded(seriesId, "Series Name", 2, "Series Description", 24, 1, "05/08/2018", 3))
 }
 
 /*---------------------------------

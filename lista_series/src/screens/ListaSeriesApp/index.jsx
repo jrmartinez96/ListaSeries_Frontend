@@ -18,6 +18,7 @@ import WelcomePage from '../welcomepage';
 import LoginPage from '../loginpage';
 import RegisterPage from '../registerpage';
 import HomePage from '../homepage';
+import EpisodePage from '../episodepage';
 
 
 class ListaSeriesApp extends React.Component {
@@ -33,6 +34,7 @@ class ListaSeriesApp extends React.Component {
                         <Route exact path="/register/" component={RegisterPage} />
                         <Route exact path="/homepage/" component={HomePage} />
                         <Route exact path="/homepage-:serieId/" component={HomePage} />
+                        <Route exact path="/homepage-:serieId/:episodeId/" component={EpisodePage} />
                     </div>
                 </BrowserRouter>
             </div>

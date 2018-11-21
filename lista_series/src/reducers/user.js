@@ -19,6 +19,10 @@ const currentUser = (state={}, action) => {
             
             return action.payload;
         }
+
+        case types.USER_LOGGED_OUT:{
+            return {};
+        }
     
         default:
             return state;

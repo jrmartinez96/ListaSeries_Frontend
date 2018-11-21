@@ -10,9 +10,17 @@
 ==========================================
 */
 
-/* CONST NAMES */
-export const WELCOME_PAGE_NAME = "Welcome!";
-export const LOGIN_PAGE_NAME = "Login";
-export const REGISTER_PAGE_NAME = "Register";
-export const HOME_PAGE_NAME = "Homepage";
-export const EPISODE_PAGE_NAME = "Episode"
+import React from 'react';
+
+class CurrentEpisode extends React.Component {
+
+    render(){
+        return(
+            <div className="current-episode-container">
+                
+            </div>
+        )
+    }
+}
+
+export default CurrentEpisode;

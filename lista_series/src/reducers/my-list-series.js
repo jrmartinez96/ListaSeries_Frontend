@@ -27,6 +27,14 @@ const byId = (state={}, action) => {
 
             return {...state, [seriesId]: undefined};
         }
+
+        case types.SERIE_ACTUAL_EPISODE_UPDATED: {
+            const { seriesId, quantity } = action.payload;
+
+            const prevSerieObject = state[seriesId];
+            const newSerieObject = {...prevSerieObject, currentEpisode: prevSerieObject["currentEpisode"] + quantity }
+            return {...state, [seriesId]: newSerieObject}
+        }
     
         default:
             return state;

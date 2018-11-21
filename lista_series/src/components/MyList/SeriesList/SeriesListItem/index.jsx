@@ -28,11 +28,11 @@ class seriesListItem extends React.Component {
     }
 
     xClick = () => {
-        const { onDeleteClick, serieId, currentSerieInfo } = this.props;
+        const { onDeleteClick, serieId, currentSerieInfo, redirectTo } = this.props;
         onDeleteClick(serieId);
 
         if(currentSerieInfo === serieId){
-
+            redirectTo("/homepage/");
         }
     }
 
@@ -70,8 +70,8 @@ const mapDispatchToProps = (dispatch) => (
             dispatch(actions.myListSeriesDeleting(serieId));
             dispatch(actions.updateCurrentSerieInfo(""))
         },
-        onDeleteCurrentSerieInfo: () => {
-            dispatch(actions.pathRedirecting("/homepage/"))
+        redirectTo: (path) => {
+            dispatch(actions.pathRedirecting(path));
         }
     }
 )

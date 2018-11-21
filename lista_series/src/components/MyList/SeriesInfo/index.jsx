@@ -12,15 +12,21 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Rating from './Rating'
 import * as stateSelectors from '../../../reducers';
+import * as actions from '../../../actions';
 
 import './series-info.css';
 
 class seriesInfo extends React.Component {
 
+    onUpdateCurrentEpisode = (seriesId, quantity) => {
+        const { updateCurrentEpisode } = this.props;
 
+        updateCurrentEpisode(seriesId, quantity);
+    }
 
     render(){
         const { appState } = this.props;
@@ -30,25 +36,40 @@ class seriesInfo extends React.Component {
         if(serie === undefined){
             return(
                 <div className="series-info-box">
-                    No serie
+                    <div className="serie-name">
+                        No serie
+                    </div>
                 </div>
             )
         }
         
 
+        const { name, rating, seasons, releaseDate, plot, currentEpisode} = serie;
+
         return(
             <div className="series-info-box">
                 <div className="serie-name">
-                    {serie.name}
+                    {name}
                 </div>
+
                 <div className="serie-rating">
-                    <Rating ratingNumber={serie.rating} />
+                    <Rating ratingNumber={rating} />
                 </div>
+
+                <div className="serie-season-release">
+                    Seasons: {seasons}
+                    <br/>
+                    Release Date: {releaseDate}
+                </div>
+
                 <div className="serie-description">
-                    {serie.plot}
+                    {plot}
                 </div>
-                <div className="serie-actual-episode-container">
-                    {}
+
+                <div className="episode-serie">
+                    <button className="episode-button" onClick={()=>this.onUpdateCurrentEpisode(serieId, -1)}>{"<<"}</button>
+                    <Link to={`/homepage-${serieId}/${currentEpisode}`}>Episode {currentEpisode} </Link>
+                    <button className="episode-button" onClick={()=>this.onUpdateCurrentEpisode(serieId, 1)}>{">>"}</button>
                 </div>
             </div>
         )
@@ -59,8 +80,16 @@ const mapStateToProps = (state) => (
     {
         appState: state,
     }
+);
+
+const mapDispatchToProps = (dispatch) => (
+    {
+        updateCurrentEpisode: (seriesId, quantity) => {
+            dispatch(actions.serieActualEpisodeUpdating(seriesId, quantity));
+        }
+    }
 )
 
-const SeriesInfo = connect(mapStateToProps, null)(seriesInfo);
+const SeriesInfo = connect(mapStateToProps, mapDispatchToProps)(seriesInfo);
 
 export default SeriesInfo;

@@ -41,6 +41,16 @@ function* registerUser(action){
 }
 
 /*---------------------------------
+              LOG OUT
+-----------------------------------*/
+function* logOutUser(action){
+    
+    yield console.log("User Loggin Out");
+
+    yield put(actions.userLoggedOut());
+}
+
+/*---------------------------------
             WATCH USER
 -----------------------------------*/
 export function* watchUser(){
@@ -53,4 +63,9 @@ export function* watchUser(){
         types.USER_REGISTERING,
         registerUser
     );
+
+    yield takeEvery(
+        types.USER_LOGGIN_OUT,
+        logOutUser
+    )
 }
