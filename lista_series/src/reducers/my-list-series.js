@@ -17,9 +17,10 @@ import * as types from '../types';
 const byId = (state={}, action) => {
     switch (action.type) {
         case types.MY_LIST_SERIES_ADDED:{
-            const { seriesId } = action.payload;
+            const { serie } = action.payload;
+            const { seriesId } = serie;
 
-            return {...state, [seriesId]: action.payload};
+            return {...state, [seriesId]: serie};
         }
 
         case types.MY_LIST_SERIES_DELETED: {
@@ -35,6 +36,10 @@ const byId = (state={}, action) => {
             const newSerieObject = {...prevSerieObject, currentEpisode: prevSerieObject["currentEpisode"] + quantity }
             return {...state, [seriesId]: newSerieObject}
         }
+
+        case types.USER_LOGGED_OUT:{
+            return {};
+        }
     
         default:
             return state;
@@ -45,7 +50,8 @@ const byId = (state={}, action) => {
 const order = (state=[], action) => {
     switch (action.type) {
         case types.MY_LIST_SERIES_ADDED:{
-            const { seriesId } = action.payload;
+            const { serie } = action.payload;
+            const { seriesId } = serie;
 
             return [...state, seriesId];
         }
@@ -54,6 +60,10 @@ const order = (state=[], action) => {
             const { seriesId } = action.payload;
 
             return state.filter(id => seriesId !== id);
+        }
+
+        case types.USER_LOGGED_OUT:{
+            return [];
         }
     
         default:
@@ -67,6 +77,10 @@ const currentSerieInfoDisplay = (state="", action) => {
         case types.CURRENT_SERIE_INFO_DISPLAY_UPDATED:{
             const { serieId } = action.payload;
             return serieId;
+        }
+
+        case types.USER_LOGGED_OUT:{
+            return "";
         }
     
         default:

@@ -30,7 +30,7 @@ const composeEnhancer = compose(
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist:['user'],
+    whitelist:['user', 'myListSeries'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

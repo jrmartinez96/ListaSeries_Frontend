@@ -22,8 +22,9 @@ import './search-list-item.css'
 class searchListItem extends React.Component {
 
     addClick = () => {
-        const { onAddClick, serieId } = this.props;
-        onAddClick(serieId);
+        const { appState, onAddClick, serieId } = this.props;
+        const serie = selectors.getSerieSearchedById(appState,serieId);
+        onAddClick(serie);
     }
 
     render(){

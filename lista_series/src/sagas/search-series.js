@@ -26,9 +26,12 @@ function* searchSeries(action){
     //TODO: API CALL
 
     const seriesSearched = [
-            {seriesId:"s4", name: "Serie search 1", rating: 3.0, description: "Description from searched serie 1"}, 
-            {seriesId:"s5", name: "Serie search 2", rating: 3.0, description: "Description from searched serie 2"}, 
-            {seriesId:"s6", name: "Serie search 3", rating: 3.0, description: "Description from searched serie 3"}
+            {seriesId:"s1", name: "The Flash", rating: 5.0, plot: "My name is Barry Allen, and I am the fastest man alive...", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
+            {seriesId:"s2", name: "Arrow", rating: 3.0, plot: "My name is Oliver Queen. 5 years ago I was strucked on an island...", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
+            {seriesId:"s3", name: "Serie search 0", rating: 3.0, plot: "Description from searched serie 0", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
+            {seriesId:"s4", name: "Serie search 1", rating: 3.0, plot: "Description from searched serie 1", episodes: 24, seasons:1, releaseDate:"21/11/2018",}, 
+            {seriesId:"s5", name: "Serie search 2", rating: 3.0, plot: "Description from searched serie 2", episodes: 24, seasons:1, releaseDate:"21/11/2018"}, 
+            {seriesId:"s6", name: "Serie search 3", rating: 3.0, plot: "Description from searched serie 3", episodes: 24, seasons:1, releaseDate:"21/11/2018"}
         ];
 
     yield put(actions.seriesSearched(name,seriesSearched));

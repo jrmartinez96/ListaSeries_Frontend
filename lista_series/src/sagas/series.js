@@ -19,13 +19,13 @@ import * as actions from '../actions';
             ADD SERIES
 -----------------------------------*/
 function* addSeriesToMyList(action){
-    const { seriesId } = action.payload;
-
+    const { serie } = action.payload;
+    const { seriesId } = serie;
     yield console.log("Serie ID to be added: ", seriesId);
 
     //TODO: API CALL
 
-    yield put(actions.myListSeriesAdded(seriesId, "Series Name", 2, "Series Description", 24, 1, "05/08/2018", 3))
+    yield put(actions.myListSeriesAdded({...serie, currentEpisode:1}))
 }
 
 /*---------------------------------

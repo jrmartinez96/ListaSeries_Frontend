@@ -82,18 +82,11 @@ export const userLoggedOut = () => (
 */
 
 // Add series to my list
-export const myListSeriesAdded = (seriesId, name, rating, plot, episodes, seasons, releaseDate, currentEpisode) => (
+export const myListSeriesAdded = (serie) => (
     {
         type: types.MY_LIST_SERIES_ADDED,
         payload: {
-            seriesId,
-            name,
-            rating,
-            plot,
-            episodes,
-            seasons,
-            releaseDate,
-            currentEpisode,
+            serie
         }
     }
 );
@@ -216,11 +209,11 @@ export const userLogginOut = () => (
 */
 
 // Adding serie saga call
-export const myListSeriesAdding = (seriesId) => (
+export const myListSeriesAdding = (serie) => (
     {
         type: types.MY_LIST_SERIES_ADDING,
         payload:{
-            seriesId,
+            serie,
         }
     }
 )
