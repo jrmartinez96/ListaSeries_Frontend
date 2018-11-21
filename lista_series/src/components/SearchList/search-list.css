@@ -10,15 +10,11 @@
 ==========================================
 */
 
-.homepage-body{
-    width: 60rem;
-    margin: 10px auto;
-    position: relative;
-    height: 1rem;
-}
-
-.homepage-search-button{
-    margin: 0 10px auto auto;
-    position: absolute;
-    right: 10px;
+.search-list-box{
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    height: 20rem;
+    flex: 1;
+    margin-right: 20px;
+    overflow-y: auto;
 }

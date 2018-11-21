@@ -28,7 +28,7 @@ function* searchSeries(action){
     const seriesSearched = [
             {seriesId:"s4", name: "Serie search 1", rating: 3.0, description: "Description from searched serie 1"}, 
             {seriesId:"s5", name: "Serie search 2", rating: 3.0, description: "Description from searched serie 2"}, 
-            {seriesId:"s4", name: "Serie search 1", rating: 3.0, description: "Description from searched serie 1"}
+            {seriesId:"s6", name: "Serie search 3", rating: 3.0, description: "Description from searched serie 3"}
         ];
 
     yield put(actions.seriesSearched(name,seriesSearched));

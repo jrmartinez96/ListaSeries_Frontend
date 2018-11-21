@@ -53,4 +53,4 @@ export const getCurrentSerieInfoDisplay = (state) => fromMyListSeries.getCurrent
     // Search Series
 export const getSeriesSearchName = (state) => fromSearchSeries.getSeriesSearchName(state.searchSeries);
 export const getSeriesSearched = (state) => fromSearchSeries.getSeriesSearched(state.searchSeries);
-export const getSerieSearchedById = (state) => fromSearchSeries.getSerieSearchedById(state.searchSeries);
+export const getSerieSearchedById = (state, serieId) => fromSearchSeries.getSerieSearchedById(state.searchSeries, serieId);

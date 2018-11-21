@@ -10,15 +10,19 @@
 ==========================================
 */
 
-.homepage-body{
-    width: 60rem;
+.search-form-container{
+    display: flex;
+    justify-content: center;
     margin: 10px auto;
-    position: relative;
-    height: 1rem;
 }
 
-.homepage-search-button{
-    margin: 0 10px auto auto;
-    position: absolute;
-    right: 10px;
+.input-search-container{
+    margin: 0 10px;
+}
+
+.my-input-search{
+    height: 1.9rem;
+    width: 20rem;
+    font-size: 1.4rem;
+    padding-left: 10px;
 }

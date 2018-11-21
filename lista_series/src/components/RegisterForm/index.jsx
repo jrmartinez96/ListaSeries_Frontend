@@ -22,7 +22,7 @@ const renderInput = ({input, meta, ...props}) => (
             <input {...input} {...props} className="my-input title-input" />
         </div>
 
-    {
+        {
             meta.error && meta.touched && (
             <div className="error">
                 { meta.error }

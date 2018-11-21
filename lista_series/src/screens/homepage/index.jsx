@@ -51,11 +51,19 @@ class homePage extends React.Component {
         }
     }
 
+    onSearchClick = () => {
+        const { redirectTo } = this.props;
+        redirectTo("/searchpage/");
+    }
+
     render(){
         
         return(
             <div>
                 <NavBar>{screenNames.HOME_PAGE_NAME}</NavBar>
+                <div className="homepage-body">
+                    <button className="homepage-search-button" onClick={this.onSearchClick}> Search >></button>
+                </div>
                 <MyList />
             </div>
         )

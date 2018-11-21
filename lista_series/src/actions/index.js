@@ -253,7 +253,7 @@ export const serieActualEpisodeUpdating = (seriesId, quantity) => (
 */
 
 // Searching series with name saga call
-export const searchingSeries  = (name) => (
+export const seriesSearching  = (name) => (
     {
         type: types.SERIES_SEARCHING,
         payload: {
