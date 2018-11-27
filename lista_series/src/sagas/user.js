@@ -11,6 +11,7 @@
 */
 
 import { put, takeEvery, call} from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 import * as types from '../types';
 import * as actions from '../actions';
@@ -22,6 +23,7 @@ import * as api from '../api';
 function* logInUser(action){
     const { username, password } = action.payload;
 
+    yield put(actions.loadingDisplayChange());
     const login = yield call(api.loginUserApi, username, password);
     
     if(login.data){
@@ -29,8 +31,13 @@ function* logInUser(action){
         const { username, user_id, email} = user;
 
         yield put(actions.userLoggedIn(token, username,email, user_id));
+        yield put(actions.myListSeriesInitializing(user_id, token));
     } else {
-        yield console.log("Error login");
+        yield put(actions.loadingDisplayChange());
+        yield put(actions.errorMessageChange("Unable to login with provided credentials"));
+        yield put(actions.errorDisplayChange());
+        yield call(delay,3000);
+        yield put(actions.errorDisplayChange());
     }
 }
 
@@ -39,13 +46,26 @@ function* logInUser(action){
                 Register
 -----------------------------------*/
 function* registerUser(action){
-    const { name, username, email, password } = action.payload;
+    const {username, email, password } = action.payload;
 
-    yield console.log("Nombre: ", name, ", Username: ", username, ", Email: ", email, ", Password: ", password)
-
-    //TODO: Api call
-
-    yield put(actions.pathRedirecting("/"));
+    yield put(actions.loadingDisplayChange());
+    const register = yield call(api.registerUserApi, username, email, password);
+    yield put(actions.loadingDisplayChange());
+    if(register.data){
+        const { status } = register;
+        if(status === 201){
+            yield put(actions.errorMessageChange("User Created"));
+            yield put(actions.errorDisplayChange());
+            yield put(actions.pathRedirecting("/"));
+            yield call(delay,3000);
+            yield put(actions.errorDisplayChange());
+        } else {
+            yield put(actions.errorMessageChange("Username or email already exist"));
+            yield put(actions.errorDisplayChange());
+            yield call(delay,3000);
+            yield put(actions.errorDisplayChange());
+        }
+    }
 }
 
 /*---------------------------------

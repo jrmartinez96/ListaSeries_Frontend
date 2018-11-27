@@ -10,31 +10,63 @@
 ==========================================
 */
 
-import { put, takeEvery} from 'redux-saga/effects';
+import { put, takeEvery, call, select} from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 import * as types from '../types';
 import * as actions from '../actions';
+import * as selectors from '../reducers';
+import * as api from '../api';
 
 /*---------------------------------
             SEARCH SERIES
 -----------------------------------*/
 function* searchSeries(action){
     const { name } = action.payload;
+    const token = yield select(selectors.getUserToken);
 
-    yield console.log("Series to search in database: ", name);
+    if(name === ""){
+        yield put(actions.seriesSearched(name,[]));
+    } else {
+        yield console.log("Series in database: \n\tName:", name, "\n\tToken: ", token);
+        
+        yield put(actions.loadingDisplayChange());
+        const search = yield call(api.searchSeriesApi,name,token);
+        yield put(actions.loadingDisplayChange());
 
-    //TODO: API CALL
+        if(search.status === 200){
+            const { data } = search;
+            
+            if(data.length !== 0){
+                const series = data.map(serie => {
+                    const { id, release_date } = serie;
+                    return {
+                        ...serie, 
+                        id:undefined, 
+                        seriesId:id,
+                        release_date:undefined,
+                        releaseDate:release_date
+                    };
+                })
+                yield put(actions.seriesSearched(name,series));
+            } else {
+                yield put(actions.seriesSearched(name,[]));
+                yield put(actions.errorMessageChange("No series found"));
+                yield put(actions.errorDisplayChange());
+                yield call(delay, 3000);
+                yield put(actions.errorDisplayChange());
+            }
 
-    const seriesSearched = [
-            {seriesId:"s1", name: "The Flash", rating: 5.0, plot: "My name is Barry Allen, and I am the fastest man alive...", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
-            {seriesId:"s2", name: "Arrow", rating: 3.0, plot: "My name is Oliver Queen. 5 years ago I was strucked on an island...", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
-            {seriesId:"s3", name: "Serie search 0", rating: 3.0, plot: "Description from searched serie 0", episodes: 24, seasons:1, releaseDate:"21/11/2018"},
-            {seriesId:"s4", name: "Serie search 1", rating: 3.0, plot: "Description from searched serie 1", episodes: 24, seasons:1, releaseDate:"21/11/2018",}, 
-            {seriesId:"s5", name: "Serie search 2", rating: 3.0, plot: "Description from searched serie 2", episodes: 24, seasons:1, releaseDate:"21/11/2018"}, 
-            {seriesId:"s6", name: "Serie search 3", rating: 3.0, plot: "Description from searched serie 3", episodes: 24, seasons:1, releaseDate:"21/11/2018"}
-        ];
+        } else {
+            yield put(actions.errorMessageChange("Error in search"));
+            yield put(actions.errorDisplayChange());
+            yield call(delay, 3000);
+            yield put(actions.errorDisplayChange());
+        }
 
-    yield put(actions.seriesSearched(name,seriesSearched));
+    }
+    
+
 }
 
 /*---------------------------------

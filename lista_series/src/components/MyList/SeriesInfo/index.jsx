@@ -44,7 +44,7 @@ class seriesInfo extends React.Component {
         }
         
 
-        const { name, rating, seasons, releaseDate, plot, currentEpisode} = serie;
+        const { name, total_rating, seasons, releaseDate, plot, currentEpisode} = serie;
 
         return(
             <div className="series-info-box">
@@ -53,7 +53,7 @@ class seriesInfo extends React.Component {
                 </div>
 
                 <div className="serie-rating">
-                    <Rating ratingNumber={rating} />
+                    <Rating ratingNumber={total_rating} />
                 </div>
 
                 <div className="serie-season-release">

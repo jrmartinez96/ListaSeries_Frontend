@@ -25,7 +25,11 @@ class Rating extends React.Component {
 
             if(dif > 0){
                 if( dif < 1){
-                    starsRating[i] = 1;
+                    if(dif < 0.5){
+                        starsRating[i] = 0;
+                    } else {
+                        starsRating[i] = 1;
+                    }
                 } else {
                     starsRating[i] = 2;
                 }

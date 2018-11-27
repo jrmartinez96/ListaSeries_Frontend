@@ -14,12 +14,16 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Redirecting from '../../components/Redirecting';
+import ErrorBox from '../../components/ErrorBox';
+import Loading from '../../components/Loading';
 import WelcomePage from '../welcomepage';
 import LoginPage from '../loginpage';
 import RegisterPage from '../registerpage';
 import HomePage from '../homepage';
 import EpisodePage from '../episodepage';
 import Searchpage from '../searchpage';
+
+import './lista-series-app.css';
 
 
 class ListaSeriesApp extends React.Component {
@@ -28,8 +32,10 @@ class ListaSeriesApp extends React.Component {
         return(
             <div>
                 <BrowserRouter>
-                    <div>
+                    <div className="router-container">
                         <Route path="/" component={Redirecting} />
+                        <Route path="/" component={ErrorBox} />
+                        <Route path="/" component={Loading} />
                         <Route exact path="/" component={WelcomePage} />
                         <Route exact path="/login/" component={LoginPage} />
                         <Route exact path="/register/" component={RegisterPage} />

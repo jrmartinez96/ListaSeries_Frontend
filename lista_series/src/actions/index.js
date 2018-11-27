@@ -39,6 +39,40 @@ export const finishRedirected = () => (
 
 /** 
  * !----------------------------------
+ *              ERROR BOX
+ * !----------------------------------
+ */
+
+export const errorMessageChange = (message) =>(
+    {
+        type: types.ERROR_MESSAGE_CHANGED,
+        payload:{
+            message,
+        }
+    }
+)
+
+export const errorDisplayChange = () =>(
+    {
+        type: types.ERROR_DISPLAY_CHANGED,
+        payload:{}
+    }
+)
+
+/** 
+ * !----------------------------------
+ *              LOADING ICON
+ * !----------------------------------
+ */
+export const loadingDisplayChange = () =>(
+    {
+        type: types.LOADING_DISPLAY_CHANGED,
+        payload: {}
+    }
+)
+
+/** 
+ * !----------------------------------
  *                USER
  * !----------------------------------
  */
@@ -171,11 +205,10 @@ export const finishRedirecting = () => (
  */
 
 // * Register
-export const userRegistering = (name, username, email, password) => (
+export const userRegistering = (username, email, password) => (
     {
         type: types.USER_REGISTERING,
         payload: {
-            name,
             username,
             email,
             password
@@ -207,6 +240,17 @@ export const userLogginOut = () => (
                     SERIES 
 * !---------------------------------------------
 */
+
+// Retriving My List from database
+export const myListSeriesInitializing = (userId, token) => (
+    {
+        type: types.MY_SERIES_INITIALIZING,
+        payload:{
+            userId,
+            token
+        }
+    }
+)
 
 // Adding serie saga call
 export const myListSeriesAdding = (serie) => (

@@ -34,12 +34,6 @@ const renderInput = ({input, meta, ...props}) => (
 
 const RegisterForm = ({ handleSubmit }) =>(
     <form onSubmit={handleSubmit} >
-        <Field 
-            type="text"
-            name="name"
-            placeholder="Name..."
-            component={renderInput}
-        />
 
         <Field 
             type="text"
@@ -79,31 +73,45 @@ export default reduxForm({
     form: 'registerForm',
 
     onSubmit(values, dispatch){
-        const { name, username, email, password } = values;
-        dispatch(actions.userRegistering(name, username, email, password));
+        const {username, email, password } = values;
+        dispatch(actions.userRegistering(username, email, password));
     },
 
     validate(values){
         const errors = {};
 
-        if(!values.name){
-            errors.name = "Es obligatorio este campo";
-        }
-
         if(!values.username){
-            errors.username = "Es obligatorio este campo";
+            errors.username = "This field is required";
         }
         
         if(!values.email){
-            errors.email = "Es obligatorio este campo";
+            errors.email = "This field is required";
         }
 
         if(!values.password){
-            errors.password = "Es obligatorio este campo";
+            errors.password = "This field is required";
         }
 
         if(!values.repeatPassword){
-            errors.repeatPassword = "Es obligatorio este campo";
+            errors.repeatPassword = "This field is required";
+        }
+
+        if(values.password && values.repeatPassword){
+            if(values.password !== values.repeatPassword){
+                errors.repeatPassword = "Passwords don't match"
+            } else {
+                if(values.password.length < 8){
+                    errors.password = "Must be at least of 8 characters"
+                }
+            }
+        }
+
+        if(values.email){
+            const isEmail = values.email.indexOf("@");
+
+            if(isEmail === -1){
+                errors.email = "Email is required"
+            }
         }
 
         return errors;

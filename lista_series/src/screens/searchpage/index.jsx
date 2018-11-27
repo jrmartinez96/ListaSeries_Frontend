@@ -36,10 +36,12 @@ class searchPage extends React.Component {
     componentWillReceiveProps(newProps){
         const { searchName } = newProps.match.params;
         const { searchInDatabase } = this.props;
-        if(searchName !== undefined){
-            searchInDatabase(searchName);
-        } else {
-            searchInDatabase("");
+        if(this.props.match.params.searchName !== searchName){
+            if(searchName !== undefined){
+                searchInDatabase(searchName);
+            } else {
+                searchInDatabase("");
+            }
         }
     }
 

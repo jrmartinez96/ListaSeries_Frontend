@@ -54,3 +54,5 @@ export default user;
 
 /* SELECTORS */
 export const getIsLoggedIn = (state) => state.isLoggedIn;
+export const getUserToken = (state) => state.currentUser.token;
+export const getUserId = (state) => state.currentUser.user_id;

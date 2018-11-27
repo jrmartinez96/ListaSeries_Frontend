@@ -60,7 +60,6 @@ export default reduxForm({
 
     onSubmit(values, dispatch){
         dispatch(actions.userLogginIn(values.username, values.password));
-        dispatch(actions.pathRedirecting("/homepage/"));
     },
 
     validate(values){

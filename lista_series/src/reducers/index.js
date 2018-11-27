@@ -17,11 +17,15 @@ import redirect from './redirect';
 import user from './user';
 import myListSeries from './my-list-series'
 import searchSeries from './search-series';
+import errorBox from './error';
+import isLoading from './loading';
 
 import * as fromRedirect from './redirect';
 import * as fromUser from './user';
 import * as fromMyListSeries from './my-list-series';
 import * as fromSearchSeries from './search-series';
+import * as fromErrorBox from './error';
+import * as fromLoading from './loading';
 
 
 /* REDUCER */
@@ -30,6 +34,8 @@ const reducer = combineReducers({
     user,
     myListSeries,
     searchSeries,
+    errorBox,
+    isLoading,
     form: formReducer,
 });
 
@@ -44,6 +50,8 @@ export const getRedirectState = (state) => fromRedirect.getRedirectState(state.r
 
     // User
 export const getIsLoggedIn = (state) => fromUser.getIsLoggedIn(state.user);
+export const getUserToken = (state) => fromUser.getUserToken(state.user);
+export const getUserId = (state) => fromUser.getUserId(state.user);
 
     // Series
 export const getMyListSeriesById = (state, seriesId) => fromMyListSeries.getMyListSeriesById(state.myListSeries, seriesId);
@@ -54,3 +62,10 @@ export const getCurrentSerieInfoDisplay = (state) => fromMyListSeries.getCurrent
 export const getSeriesSearchName = (state) => fromSearchSeries.getSeriesSearchName(state.searchSeries);
 export const getSeriesSearched = (state) => fromSearchSeries.getSeriesSearched(state.searchSeries);
 export const getSerieSearchedById = (state, serieId) => fromSearchSeries.getSerieSearchedById(state.searchSeries, serieId);
+
+    // ErrorBox
+export const getErrorMessage = (state) => fromErrorBox.getErrorMessage(state.errorBox);
+export const getErrorDisplay = (state) => fromErrorBox.getErrorDisplay(state.errorBox);
+
+    // Loading
+export const getIsLoading = (state) => fromLoading.getIsLoading(state)
