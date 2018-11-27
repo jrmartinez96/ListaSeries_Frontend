@@ -10,10 +10,11 @@
 ==========================================
 */
 
-import { put, takeEvery} from 'redux-saga/effects';
+import { put, takeEvery, call} from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
+import * as api from '../api';
 
 /*---------------------------------
                 LOG IN
@@ -21,9 +22,16 @@ import * as actions from '../actions';
 function* logInUser(action){
     const { username, password } = action.payload;
 
-    // TODO: API call
+    const login = yield call(api.loginUserApi, username, password);
+    
+    if(login.data){
+        const { token, user} = login.data;
+        const { username, user_id, email} = user;
 
-    yield put(actions.userLoggedIn("Juan", username,"ads@asd.com", password))
+        yield put(actions.userLoggedIn(token, username,email, user_id));
+    } else {
+        yield console.log("Error login");
+    }
 }
 
 

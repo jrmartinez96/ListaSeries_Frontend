@@ -37,11 +37,11 @@ class seriesListItem extends React.Component {
     }
 
     render(){
-        const { appState, serieId } = this.props;
+        const { appState, serieId, currentSerieInfo } = this.props;
         const serie = stateSelectors.getMyListSeriesById(appState,serieId);
         const { name } = serie;
         return(
-            <div className="series-list-item-box">
+            <div className={`series-list-item-box ${serieId === currentSerieInfo ? "selected":""}`}>
                 <div className="series-name"  onClick={this.onCurrentItemClick}>
                     {name}
                 </div>

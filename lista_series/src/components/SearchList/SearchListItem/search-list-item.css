@@ -12,7 +12,6 @@
 
 .search-list-item-box{
     border-bottom: 1px solid rgba(128, 128, 128, 0.315);
-    cursor: pointer;
     display: flex;
     height: 2.3rem;
     width: 100%;
@@ -38,6 +37,7 @@
     background: steelblue;
     border-radius: 50%;
     color: white;
+    cursor: pointer;
     height: 1.4rem;
     text-align: center;
     width: 1.4rem;
@@ -45,6 +45,7 @@
 
 .add-button.disable{
     background: rgba(70, 131, 180, 0.466);
+    cursor: default;
 }
 
 .add-button:hover{

@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+.series-list-item-box.selected{
+    background: rgba(0, 128, 0, 0.397);
+}
+
 .series-name{
     align-items: center;
     display: flex;

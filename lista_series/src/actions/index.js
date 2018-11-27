@@ -54,14 +54,14 @@ export const userRegistered = (success) => (
 )
 
 // * Login
-export const userLoggedIn = (name, username, email, password) => (
+export const userLoggedIn = (token, username, email, user_id) => (
     {
         type: types.USER_LOGGED_IN,
         payload: {
-            name,
+            token,
             username,
             email,
-            password
+            user_id
         }
     }
 )
