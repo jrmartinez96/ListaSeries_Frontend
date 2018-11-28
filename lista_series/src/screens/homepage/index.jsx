@@ -26,28 +26,32 @@ class homePage extends React.Component {
 
     componentDidMount(){
         const { serieId } = this.props.match.params;
-        const { appState, changeSerieInfo, redirectTo } = this.props;
-        if(serieId !== undefined){
-            const serie = selectors.getMyListSeriesById(appState, serieId);
-            if(serie === undefined){
-                changeSerieInfo("");
-                alert("Serie is not added or doesn't exist \nRedirecting to /homepage");
-                redirectTo("/homepage/");
+        const { appState, changeSerieInfo, redirectTo, isLoading } = this.props;
+        if(!isLoading){
+            if(serieId !== undefined){
+                const serie = selectors.getMyListSeriesById(appState, serieId);
+                if(serie === undefined){
+                    changeSerieInfo("");
+                    alert("Serie is not added or doesn't exist \nRedirecting to /homepage");
+                    redirectTo("/homepage/");
+                } else {
+                    changeSerieInfo(serieId);
+                }
             } else {
-                changeSerieInfo(serieId);
+                changeSerieInfo("");
             }
-        } else {
-            changeSerieInfo("");
         }
     }
 
     componentWillReceiveProps(newProps){
         const { serieId } = newProps.match.params;
-        const { changeSerieInfo } = this.props;
-        if(serieId !== undefined){
-            changeSerieInfo(serieId);
-        } else {
-            changeSerieInfo("");
+        const { changeSerieInfo, isLoading } = this.props;
+        if(!isLoading){
+            if(serieId !== undefined){
+                changeSerieInfo(serieId);
+            } else {
+                changeSerieInfo("");
+            }
         }
     }
 
@@ -62,7 +66,7 @@ class homePage extends React.Component {
             <div>
                 <NavBar>{screenNames.HOME_PAGE_NAME}</NavBar>
                 <div className="homepage-body">
-                    <button className="homepage-search-button" onClick={this.onSearchClick}> Search >></button>
+                    <button className="homepage-search-button" onClick={this.onSearchClick}> Search &#8594;</button>
                 </div>
                 <MyList />
             </div>
@@ -73,6 +77,7 @@ class homePage extends React.Component {
 const mapStateToProps = (state) => (
     {
         appState: state,
+        isLoading: selectors.getIsLoading(state),
     }
 )
 

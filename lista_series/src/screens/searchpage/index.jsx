@@ -45,10 +45,7 @@ class searchPage extends React.Component {
         }
     }
 
-    onReturnClick = () => {
-        const { redirectTo } = this.props;
-        redirectTo("/homepage/");
-    }
+
 
     render(){
         const { searchName } = this.props;
@@ -57,7 +54,6 @@ class searchPage extends React.Component {
             <div>
                 <NavBar> Search Page</NavBar>
                 <div className="searchpage-body">
-                    <button onClick={this.onReturnClick}> Return to homepage </button>
                     <SearchForm />
                     { searchName === "" ? <div></div> :<div> Search results for: {searchName}</div> }
                     { searchName === "" ? <div></div> :<SearchList/> }

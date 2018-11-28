@@ -31,10 +31,12 @@ function* initializeSeriesToMyList(action){
         for (let i = 0; i < data.length; i++) {
             const assignment = data[i];
             const { serie_id, current_episode } = assignment;
-
+            
             const serieCall = yield call(api.getSerieByIdApi, serie_id, token);
+            
             if(serieCall.status === 200){
                 const serie = serieCall.data[0];
+                
                 const { id, release_date } = serie;
                 yield put(actions.myListSeriesAdded({
                     ...serie, 
@@ -83,10 +85,16 @@ function* addSeriesToMyList(action){
 -----------------------------------*/
 function* deleteSeriesFromMyList(action){
     const { seriesId } = action.payload;
+    const userId = yield select(selectors.getUserId);
+    const token = yield select(selectors.getUserToken);
 
     yield console.log("Series ID to be deleted: ", seriesId);
 
-    //TODO: API CALL
+    yield put(actions.loadingDisplayChange());
+    const deleteAssign = yield call(api.deleteAssignmentApi,userId, seriesId, token);
+    yield put(actions.loadingDisplayChange());
+
+    yield console.log(deleteAssign);
 
     yield put(actions.myListSeriesDeleted(seriesId));
 

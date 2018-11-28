@@ -12,13 +12,25 @@
 
 .homepage-body{
     width: 60rem;
-    margin: 10px auto;
+    margin: 15px auto;
     position: relative;
     height: 1rem;
 }
 
 .homepage-search-button{
+    background: steelblue;
+    border-radius: 10px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    height: 2rem;
     margin: 0 10px auto auto;
     position: absolute;
     right: 10px;
+    width: 7.5rem;
+}
+
+.homepage-search-button:hover{
+    background: rgb(63, 117, 161);
 }

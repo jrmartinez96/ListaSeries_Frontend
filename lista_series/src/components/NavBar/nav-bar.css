@@ -49,3 +49,21 @@
 .log-out-button:hover{
     background: rgb(63, 117, 161);
 }
+
+.return-button{
+    background: steelblue;
+    border-radius: 10px;
+    border: 0;
+    bottom: 10px;
+    color: white;
+    font-size: 1.2rem;
+    height: 2rem;
+    position: absolute;
+    left: 10px;
+    width: 7.5rem;
+    cursor: pointer;
+}
+
+.return-button:hover{
+    background: rgb(63, 117, 161);
+}

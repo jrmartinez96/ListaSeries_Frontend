@@ -22,6 +22,16 @@ import './nav-bar.css';
 
 class navBar extends React.Component {
 
+    returnPage = () => {
+        const { isLoggedIn, redirectTo } = this.props;
+
+        if(isLoggedIn){
+            redirectTo('/homepage/');
+        } else {
+            redirectTo('/');
+        }
+    }
+
     render(){
         const { isLoggedIn, logOut, children } = this.props;
 
@@ -43,6 +53,12 @@ class navBar extends React.Component {
                 </div>
         
                 {isLoggedIn ? <button className="log-out-button" onClick={() => logOut()}> Log Out</button> : ""}
+                {
+                    children !== screenNames.WELCOME_PAGE_NAME && children !== screenNames.HOME_PAGE_NAME ?
+                    <button className="return-button" onClick={() => this.returnPage()}>&#8592; Return</button>
+                    : 
+                    <div></div>
+                }
             </div>
         );
     }
@@ -59,6 +75,9 @@ const mapDispatchToProps = (dispatch) => (
         logOut: () => {
             dispatch(actions.userLogginOut());
         },
+        redirectTo: (path) => {
+            dispatch(actions.pathRedirecting(path));
+        }
     }
 )
 
